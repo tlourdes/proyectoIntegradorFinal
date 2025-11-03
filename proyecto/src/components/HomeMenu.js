@@ -1,9 +1,11 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import NuevoPost from "../screens/NuevoPost";
 
+
 import Feather from '@expo/vector-icons/Feather';
+import MenuComentarios from './MenuComentarios';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +16,7 @@ function HomeMenu() {
         tabBarIcon: () => (
           <Feather name="home" size={24} color="black" />
         ), headerShown: false }} />
-        <Tab.Screen name="nuevoPost" component={NuevoPost} options={{
+        <Tab.Screen name="NuevoPost" component={NuevoPost} options={{
         tabBarIcon: () => (
           <Feather name="edit" size={24} color="black" />
         ), headerShown: false
@@ -24,7 +26,12 @@ function HomeMenu() {
           <Feather name="user" size={24} color="black" />
         ), headerShown: false
       }} />
+       <Tab.Screen name="MenuComentarios" component={MenuComentarios} options={{
+       headerShown: false
+      }} />
+
     </Tab.Navigator>
+
   );
 }
 

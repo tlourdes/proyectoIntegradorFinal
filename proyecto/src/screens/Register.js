@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
-import {db, auth} from "../firebase/config";
+import { db, auth } from "../firebase/config";
 
 class Register extends Component {
   constructor(props) {
@@ -10,42 +10,69 @@ class Register extends Component {
       username: "",
       password: "",
       registered: false,
-      error: ""
+      error1: "",
+      error2: "",
+      error3: "",
     };
   }
 
-  onSubmit(email, pass, username) { 
-    auth.createUserWithEmailAndPassword(email, pass)
-    .then( response => {
-      this.setState({ registered: true });
-      console.log('Usuario registrado exitosamente:', response);
-      this.props.navigation.navigate('Login');
-      db.collection('users').add({
-        email: this.state.email,
-        username: this.state.username,
-        createdAt: Date.now()
+  onSubmit(email, pass, username) {
+    auth
+      .createUserWithEmailAndPassword(email, pass)
+      .then((response) => {
+        this.setState({ registered: true });
+        console.log("Usuario registrado exitosamente:", response);
+        
+
+        db.collection("users")
+          .add({
+            email: this.state.email,
+            username: this.state.username,
+            createdAt: Date.now(),
+          })
+          .then(() => {
+            console.log(db.collection("users"));
+             this.props.navigation.navigate("Login");
+
+            this.setState({
+              loggedIn: true,
+              
+            });
+          })
+          .catch((error) => {
+           
+
+            console.log( error);
+          });
       })
-      .then( () => {
-        console.log(db.collection('users'));
-      })
-      .catch( error => {
-        console.log('Error al guardar los datos del usuario:', error);
+      .catch((error) => {
+        console.log(error.message);
+        if (error.message === "The email address is badly formatted.") {
+          this.setState({ error1: "Email mal formateado" });
+        } else {
+          this.setState({ error1: "" });
+        }
+        if (error.message.includes("exists")) {
+          this.setState({ error2: "l email ya está en uso" });
+        } else {
+          this.setState({ error2: "" });
+        }if (error.message.includes("6 characters")) {
+          this.setState({
+            error3: "La password debe tener una longitud mínima de 6 caracteres"
+          });
+        }else {
+          this.setState({ error3: "" });
+        }
+
+
+        console.log("Error en el registro:", error);
       });
-    })
-
-    .catch( error => {
-      console.log('Error en el registro:', error);
-    })
-    .catch( error => this.setState({ error: error }));
-    }
- 
-
+  }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Crear cuenta</Text>
-
 
         <TextInput
           style={styles.input}
@@ -55,6 +82,8 @@ class Register extends Component {
           value={this.state.email}
         />
 
+        <Text>{this.state.error1}</Text>
+        <Text>{this.state.error2}</Text>
 
         <TextInput
           style={styles.input}
@@ -62,7 +91,6 @@ class Register extends Component {
           onChangeText={(text) => this.setState({ username: text })}
           value={this.state.username}
         />
-
 
         <TextInput
           style={styles.input}
@@ -72,16 +100,27 @@ class Register extends Component {
           value={this.state.password}
         />
 
+        <Text>{this.state.error3}</Text>
 
-        <Pressable style={styles.button} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.username)} >
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            this.onSubmit(
+              this.state.email,
+              this.state.password,
+              this.state.username
+            )
+          }
+        >
           <Text style={styles.buttonText}>Registrate</Text>
         </Pressable>
 
-        <Pressable style={styles.button} onPress={() => this.props.navigation.navigate("Login")} >
+        <Pressable
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate("Login")}
+        >
           <Text style={styles.buttonText}>Ya tengo cuenta</Text>
         </Pressable>
-
-
       </View>
     );
   }
@@ -90,26 +129,11 @@ class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
-  title: {
-    
-  },
-  input: {
-    
-  },
-  button: {
-    
-  },
-  buttonText: {
-    
-  },
-  dataPreview: {
-   
-  },
-  previewTitle: {
-    
-  },
+  title: {},
+  input: {},
+  button: {},
+  buttonText: {},
 });
 
 export default Register;

@@ -12,7 +12,13 @@ class Login extends Component {
       error1: ""
     };
   }
-
+   componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.props.navigation.navigate("HomeMenu");
+      }
+    });
+  }
   onSubmit(email,pass) {
     console.log("Datos ingresados:");
     console.log("Email:", this.state.email);
@@ -24,7 +30,7 @@ class Login extends Component {
       this.setState({loggedIn: true, error1: "",}
       );
       console.log("Login exitoso:", response);
-      this.props.navigation.navigate("HomeMenu"); /*Te lleva a home (hay que agrugarlo*/
+      this.props.navigation.navigate("HomeMenu"); 
     })
 
     .catch(error=>{
@@ -74,12 +80,7 @@ class Login extends Component {
           <Text style={styles.buttonText}>No tengo cuenta</Text>
         </Pressable>
 
-        <Pressable
-          style={[styles.button, styles.orangeButton]}
-          onPress={() => this.props.navigation.navigate("HomeMenu")} /*Te lleva a home (hay que agrugarlo*/
-        >
-          <Text style={styles.buttonText}>Home</Text>
-        </Pressable>
+     
       </View>
     );
   }
