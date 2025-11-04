@@ -77,14 +77,25 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-  
+    flex: 1,
+    backgroundColor: '#F2F2F7', // fondo suave tipo iOS
+    paddingHorizontal: 10,
+    paddingTop: 20,
   },
   title: {
-  
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#111',
+    marginBottom: 15,
+    textAlign: 'center',
   },
   noPosts: {
-   
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 40,
   },
 });
+
 
 export default Home;

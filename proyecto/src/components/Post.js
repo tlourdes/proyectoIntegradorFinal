@@ -91,26 +91,53 @@ if (this.props.data.likes) {
 
 const styles = StyleSheet.create({
   card: {
-    
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 15,
+    marginVertical: 10,
+    marginHorizontal: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 3,
   },
   mensaje: {
-     
+    fontSize: 16,
+    color: '#222',
+    marginBottom: 10,
+    lineHeight: 22,
   },
   email: {
-     
+    fontSize: 13,
+    color: '#777',
+    marginBottom: 15,
   },
   actions: {
-     
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 5,
   },
   button: {
-     
+    backgroundColor: '#007AFF',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonText: {
-    
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '500',
   },
   likes: {
-     
+    marginTop: 10,
+    fontSize: 14,
+    color: '#555',
+    fontWeight: '500',
   },
 });
+
 
 export default Post;
