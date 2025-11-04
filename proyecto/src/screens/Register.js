@@ -53,7 +53,7 @@ class Register extends Component {
           this.setState({ error1: "" });
         }
         if (error.message.includes("exists")) {
-          this.setState({ error2: "l email ya está en uso" });
+          this.setState({ error2: "Email ya está en uso" });
         } else {
           this.setState({ error2: "" });
         }if (error.message.includes("6 characters")) {
@@ -129,11 +129,34 @@ class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
   },
-  title: {},
-  input: {},
-  button: {},
-  buttonText: {},
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  input: {
+    width: '80%',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 15,
+  },
+  button: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
 });
 
 export default Register;
