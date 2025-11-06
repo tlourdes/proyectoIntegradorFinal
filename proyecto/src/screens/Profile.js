@@ -80,7 +80,7 @@ class Profile extends Component {
         <Text style={styles.titulo}>Mi Perfil</Text>
 
         <View style={styles.infoUsuario}>
-          <Text style={styles.texto}>📧 {usuario.email}</Text>
+          <Text style={styles.texto}> {usuario.email}</Text>
         </View>
 
         <Text style={styles.subtitulo}>Mis posteos</Text>
@@ -112,53 +112,56 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f9f9f9",
-    alignItems: "center",
-    padding: 20,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
   titulo: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#222",
-    marginVertical: 10,
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#1fa34a',
+    marginBottom: 15,
   },
   infoUsuario: {
-    backgroundColor: "#fff",
-    padding: 15,
-    borderRadius: 10,
-    width: "90%",
-    alignItems: "center",
-    marginVertical: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
+    backgroundColor: '#f0f0f0', 
+    borderWidth: 1,
+    borderColor: 'green',
+    borderRadius: 8,
+    width: '40%', 
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    marginBottom: 20,
+    shadowOpacity: 0.06,
   },
   texto: {
-    fontSize: 16,
-    color: "#333",
+    fontSize: 14,
+    color: 'black',
   },
   subtitulo: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 15,
+    fontSize: 23,
+    marginTop: 10,
     marginBottom: 5,
-    color: "#444",
-    alignSelf: "flex-start",
+    color: '#1fa34a',
+    alignSelf: 'center',
   },
   botonCerrar: {
-    backgroundColor: "#FF3B30",
+    backgroundColor: '#e53935',
     paddingVertical: 10,
     paddingHorizontal: 25,
-    borderRadius: 8,
-    marginTop: 20,
+    borderRadius: 6,
+    marginTop: 25,
+    width: 'auto', 
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textoBoton: {
-    color: "#fff",
+    color: 'white',
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
   },
 });
+
 
 export default Profile;
