@@ -8,17 +8,28 @@ class Profile extends Component {
     super(props);
     this.state = {
       usuario: null,
+      username: "",
       posts: [],
       cargando: true,
     };
   }
 
   componentDidMount() {
-    console.log("Montando Perfil...");
+    
     auth.onAuthStateChanged((usuario) => {
       if (usuario) {
         console.log("Usuario detectado:", usuario.email);
-        this.setState({ usuario }, () => this.obtenerPosteos(usuario));
+        this.setState({usuario: usuario});
+        this.obtenerPosteos(usuario);
+        db.collection("users")
+          .where("email", "==", usuario.email)
+          .get()
+           .then((docs) => {
+              const userData = docs.docs[0].data(); //no me acuerdo si esto lo vimos asi
+              this.setState({ username: userData.username }); 
+          })
+          .catch((error) => console.log("Error al obtener username:", error));
+
       } else {
         this.props.navigation.navigate("Login");
       }
@@ -37,7 +48,7 @@ class Profile extends Component {
               data: doc.data(),
             });
           });
-          this.setState({ posts, cargando: false });
+          this.setState({ posts: posts, cargando: false });
         },
         (error) => {
           console.log("Error Firestore:", error);
@@ -57,7 +68,9 @@ class Profile extends Component {
   }
 
   render() {
-    const { usuario, posts, cargando } = this.state;
+    const usuario = this.state.usuario;
+    const posts = this.state.posts;
+    const cargando = this.state.cargando;
 
     if (cargando) {
       return (
@@ -80,6 +93,7 @@ class Profile extends Component {
         <Text style={styles.titulo}>Mi Perfil</Text>
 
         <View style={styles.infoUsuario}>
+          <Text style={styles.texto}>{this.state.username}</Text> {/* quedaria más lindo agrndarle la letra */}
           <Text style={styles.texto}> {usuario.email}</Text>
         </View>
 
@@ -95,7 +109,7 @@ class Profile extends Component {
               <Post
                 data={item.data}
                 id={item.id}
-                navigation={this.props.navigation}
+                navigation={this.props.navigation} //medio raros los estilos de esta parte.
               />
             )}
           />
