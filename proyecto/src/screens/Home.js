@@ -78,7 +78,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F7', // fondo suave tipo iOS
+    backgroundColor: '#F2F2F7',
     paddingHorizontal: 10,
     paddingTop: 20,
   },
