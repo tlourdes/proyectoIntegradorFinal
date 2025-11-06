@@ -56,7 +56,7 @@ if (this.props.data.likes) {
 
 
   Comentarios() {
-    this.props.navigation.navigate("Comentarios", { postId: this.props.id });
+    this.props.navigation.navigate("Comentarios", { postId: this.props.id }); //vamos a Comentarios y le pasamos como parametro el id del post
   }
 
   render() {
