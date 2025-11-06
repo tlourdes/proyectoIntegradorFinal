@@ -7,10 +7,19 @@ class NuevoPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
-      loading: true,
-      user: null,
+        mensaje: "",
+        error: "",
     };
-  }};
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        this.props.navigation.navigate("Login");
+      }
+    });
+  }
+};
+
+
 
 export default NuevoPost;
