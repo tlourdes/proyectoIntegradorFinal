@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     alignItems: 'center',
     shadowOpacity: 0.06,
-    shadowRadius: 3,
   },
   input: {
     width: '90%',

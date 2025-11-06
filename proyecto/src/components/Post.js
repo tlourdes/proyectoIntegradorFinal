@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '65%',
     shadowOpacity: 0.06,
-    shadowRadius: 3,
   },
   mensaje: {
     fontSize: 17,
