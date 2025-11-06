@@ -13,10 +13,18 @@ class Register extends Component {
       error1: "",
       error2: "",
       error3: "",
+      error4: "",
     };
   }
 
   onSubmit(email, pass, username) {
+      if (username.length < 5) {
+        this.setState({ error4: "El nombre de usuario debe tener al menos 5 caracteres." });
+        return; //frena la funcion, no crea usuario hasta que se llene el campo.
+    }else{
+      this.setState({ error4: "" });
+    }
+
     auth
       .createUserWithEmailAndPassword(email, pass)
       .then((response) => {
@@ -92,6 +100,8 @@ class Register extends Component {
           onChangeText={(text) => this.setState({ username: text })}
           value={this.state.username}
         />
+
+         <Text>{this.state.error4}</Text>
 
         <TextInput
           style={styles.input}
