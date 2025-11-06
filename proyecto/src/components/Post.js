@@ -23,7 +23,6 @@ if (this.props.data.likes) {
     };
   }
 
- 
   likePost() {
     db.collection("posts")
       .doc(this.props.id)
