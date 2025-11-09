@@ -25,8 +25,7 @@ class Profile extends Component {
           .where("email", "==", usuario.email)
           .get()
            .then((docs) => {
-              const userData = docs.docs[0].data(); //no me acuerdo si esto lo vimos asi
-              this.setState({ username: userData.username }); 
+              this.setState({ username: docs.docs[0].data().username }); 
           })
           .catch((error) => console.log("Error al obtener username:", error));
 
