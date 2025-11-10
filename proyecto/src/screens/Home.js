@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image} from "react-native";
 import { db, auth } from "../firebase/config";
 import Post from "../components/Post";
+import logo from "..///../assets/logo.png"; 
 
 class Home extends Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class Home extends Component {
       user: null,
     };
   }
-
   componentDidMount() {
     
     auth.onAuthStateChanged((user) => {
@@ -53,6 +53,9 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
+      <View style={styles.header}>
+      <Image source={logo} style={styles.logo} />
+    </View>
         <Text style={styles.title}>Posteos recientes</Text>
 
         {this.state.posts.length === 0 ? (
@@ -94,6 +97,17 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginTop: 40,
+  },
+  header: {                       
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+    paddingHorizontal: 10,
+  },
+  logo: {               
+    width: 60,
+    height: 60,
+    marginRight: 10,
   },
 });
 

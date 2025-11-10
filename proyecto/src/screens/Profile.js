@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, Pressable, StyleSheet } from "react-native";
+import { View, Text, FlatList, Pressable, StyleSheet, Image} from "react-native";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
+import logo from "..///../assets/logo.png"; 
 
 class Profile extends Component {
   constructor(props) {
@@ -95,6 +96,9 @@ class Profile extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.header}>
+              <Image source={logo} style={styles.logo} />
+            </View>
         <Text style={styles.titulo}>Mi Perfil</Text>
 
         <View style={styles.infoUsuario}>
@@ -131,23 +135,38 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F7',
     alignItems: 'center',
-    paddingTop: 40,
+    paddingTop: 20,
     paddingHorizontal: 20,
   },
+
+  header: {                        
+    position: 'absolute',
+    top: 40,                     
+    left: 20,                  
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  logo: {                         
+    width: 60,
+    height: 60,
+  },
+
   titulo: {
     fontSize: 26,
     fontWeight: '700',
     color: '#1fa34a',
+    marginTop: 80,               
     marginBottom: 15,
   },
   infoUsuario: {
-    backgroundColor: '#f0f0f0', 
+    backgroundColor: '#f0f0f0',
     borderWidth: 1,
     borderColor: 'green',
     borderRadius: 8,
-    width: '40%', 
+    width: '40%',
     alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 15,
@@ -171,7 +190,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 6,
     marginTop: 25,
-    width: 'auto', 
+    width: 'auto',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -181,10 +200,10 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   post: {
-    width: "65%"
-
+    width: '65%',
   },
 });
+
 
 
 export default Profile;

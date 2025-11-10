@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, FlatList, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, FlatList, StyleSheet, Image } from "react-native";
 import { db, auth } from "../firebase/config";
+import logo from "..///../assets/logo.png"; 
 
 class Comentarios extends Component {
   constructor(props) {
@@ -79,6 +80,9 @@ class Comentarios extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.header}>
+                      <Image source={logo} style={styles.logo} />
+                    </View>
         <Text style={styles.title}>Comentarios</Text>
 
         
@@ -122,7 +126,7 @@ class Comentarios extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f2f2f2",
+    backgroundColor: '#F2F2F7',
     padding: 20,
   },
   title: {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, Image} from "react-native";
 import { db, auth } from "../firebase/config";
+import logo from "..///../assets/logo.png"; 
 
 class Register extends Component {
   constructor(props) {
@@ -80,6 +81,9 @@ class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
+         <View style={styles.header}>
+              <Image source={logo} style={styles.logo} />
+            </View>
         <Text style={styles.title}>Crear cuenta</Text>
 
         <View style={styles.formBox}>
@@ -141,15 +145,25 @@ class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F7',
     paddingHorizontal: 20,
+    paddingTop: 20,             
+  },
+  header: {                       
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start', 
+    marginBottom: 10,           
+  },
+  logo: {               
+    width: 60,
+    height: 60,
   },
   title: {
     fontSize: 26,
     fontWeight: '700',
     color: '#1fa34a',
+    textAlign: 'center',        
     marginBottom: 15,
   },
   formBox: {
@@ -163,6 +177,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     alignItems: 'center',
     shadowOpacity: 0.06,
+    alignSelf: 'center',         
   },
   input: {
     width: '90%',
@@ -193,5 +208,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
 
 export default Register;

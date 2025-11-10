@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, Image } from "react-native";
 import {auth} from "../firebase/config";
+import logo from "..///../assets/logo.png"; 
 
 class Login extends Component {
   constructor(props) {
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "white"
+    backgroundColor: '#F2F2F7',
   },
   title: {
     fontSize: 26,

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, Image} from "react-native";
 import { db, auth } from "../firebase/config";
+import logo from "..///../assets/logo.png"; 
+
 
 class NuevoPost extends Component {
   constructor(props) {
@@ -51,6 +53,9 @@ class NuevoPost extends Component {
 
     return (
       <View style={styles.container}>
+          <View style={styles.header}>
+              <Image source={logo} style={styles.logo} />
+            </View>
         <Text style={styles.titulo}>Crear nuevo post</Text>
        
         <View style={styles.formBox}>
@@ -76,17 +81,34 @@ class NuevoPost extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#F2F2F7',
+    paddingTop: 20,
     paddingHorizontal: 20,
+    alignItems: 'center',
   },
+
+  header: {         
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  logo: {                   
+    width: 60,
+    height: 60,
+  },
+
   titulo: {
     fontSize: 26,
     fontWeight: '700',
     color: '#1fa34a',
+    marginTop: 90,                   // 🔼 deja espacio debajo del logo
     marginBottom: 15,
+    textAlign: 'center',
   },
+
   formBox: {
     width: '80%',
     maxWidth: 400,
@@ -94,17 +116,19 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: '#d0d0d0',
     borderRadius: 8,
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
     alignItems: 'center',
     shadowOpacity: 0.06,
+    alignSelf: 'center',
   },
+
   input: {
     width: '90%',
-    minHeight: 80,          
+    minHeight: 70,
     backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: 'green',
+    borderColor: '#1fa34a',
     borderRadius: 4,
     paddingHorizontal: 10,
     paddingVertical: 8,
@@ -112,6 +136,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlignVertical: 'top',
   },
+
   boton: {
     width: '90%',
     height: 36,
@@ -119,20 +144,24 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 6,
+    marginTop: 8,
   },
+
   textoBoton: {
     color: '#fff',
     fontSize: 14,
     fontWeight: '600',
   },
+
   error: {
     width: '90%',
     color: '#c62828',
     fontSize: 13,
     marginBottom: 6,
+    textAlign: 'center',
   },
 });
+
 
 
 export default NuevoPost;
