@@ -44,6 +44,9 @@ class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
+         <View style={styles.header}>
+                              <Image source={logo} style={styles.logo} />
+                            </View>
         <Text style={styles.title}>Login</Text>
   
         <View style={styles.formBox}>
@@ -86,20 +89,38 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#F2F2F7',  
+    paddingHorizontal: 20,
+    paddingTop: 40,
     alignItems: 'center',
-    backgroundColor: '#F2F2F7',
   },
+
+  header: {              
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  logo: {                
+    width: 60,
+    height: 60,
+  },
+
   title: {
     fontSize: 26,
     fontWeight: '700',
     color: '#1fa34a',
+    marginTop: 90,             
     marginBottom: 15,
+    textAlign: 'center',
   },
+
   formBox: {
     width: '80%',
     maxWidth: 400,
-    backgroundColor: '#f0f0f0', 
+    backgroundColor: '#f0f0f0',
     borderWidth: 1.5,
     borderColor: '#d0d0d0',
     borderRadius: 8,
@@ -107,36 +128,42 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     alignItems: 'center',
     shadowOpacity: 0.06,
+    alignSelf: 'center',
   },
+
   input: {
-    width: '90%',       
-    height: 32,  
-    backgroundColor: 'white',
+    width: '90%',
+    height: 32,
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: 'green',
+    borderColor: '#1fa34a',        
     borderRadius: 4,
     paddingHorizontal: 8,
     fontSize: 13,
     marginBottom: 10,
   },
+
   button: {
-    width: '90%',   
-    height: 34,     
+    width: '90%',
+    height: 34,
     backgroundColor: '#1fa34a',
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 8,
   },
+
   buttonSec: {
     backgroundColor: '#199446',
   },
+
   buttonText: {
     color: '#fff',
     fontSize: 14,
-    fontWeight: '600'
+    fontWeight: '600',
   },
 });
+
 
 
 export default Login;

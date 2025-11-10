@@ -122,65 +122,97 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2F2F7',
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 40,
   },
+
+  header: {                    
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  logo: {                     
+    width: 60,
+    height: 60,
+  },
+
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#222",
-    marginBottom: 10,
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#1fa34a',
+    marginTop: 90,               
+    marginBottom: 15,
+    textAlign: 'center',
   },
-  loading: {
-    fontSize: 16,
-    color: "#555",
-  },
+
   noComments: {
     fontSize: 16,
-    color: "#666",
+    color: '#666',
     marginVertical: 10,
+    textAlign: 'center',
   },
+
   commentCard: {
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 8,
-    marginBottom: 10,
+    backgroundColor: '#f0f0f0',
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: '#d0d0d0',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 10,
+    width: '80%',          
+    alignSelf: 'center',
   },
+
   commentText: {
-    fontSize: 16,
-    color: "#333",
+    fontSize: 15,
+    color: '#222',
   },
   commentAuthor: {
-    fontSize: 13,
-    color: "#777",
-    marginTop: 4,
+    fontSize: 12,
+    color: '#555',
+    marginTop: 5,
   },
+
   input: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 10,
+    backgroundColor: '#fff',
     borderWidth: 1,
-    borderColor: "#ccc",
-    fontSize: 16,
+    borderColor: '#1fa34a',
+    borderRadius: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+    width: '80%',
+    alignSelf: 'center',
     marginTop: 15,
   },
+
   button: {
-    backgroundColor: "#007AFF",
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginTop: 15,
-    alignItems: "center",
+    backgroundColor: '#1fa34a',
+    paddingVertical: 10,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '80%',
+    alignSelf: 'center',
+    marginTop: 10,
   },
+
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
   },
+
   error: {
-    color: "red",
-    marginTop: 8,
+    color: '#c62828',
+    textAlign: 'center',
+    fontSize: 13,
+    marginTop: 6,
   },
 });
+
 
 export default Comentarios;
