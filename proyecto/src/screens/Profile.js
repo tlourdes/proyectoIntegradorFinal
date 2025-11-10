@@ -23,11 +23,17 @@ class Profile extends Component {
         this.obtenerPosteos(usuario);
         db.collection("users")
           .where("email", "==", usuario.email)
-          .get()
-           .then((docs) => {
-              this.setState({ username: docs.docs[0].data().username }); 
-          })
-          .catch((error) => console.log("Error al obtener username:", error));
+          .onSnapshot(
+           (docs) => {
+            let usuarios = [];
+            docs.forEach((doc) => {
+              usuarios.push({
+                id: doc.id,
+                data: doc.data(),
+              });
+             this.setState({ username: usuarios[0].data.username });
+          })})
+         
 
       } else {
         this.props.navigation.navigate("Login");
