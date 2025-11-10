@@ -63,13 +63,8 @@ class Comentarios extends Component {
   }
 
   render() {
-    const cargando = this.state.cargando;
-    const comentarios = this.state.comentarios;
-    const comentario = this.state.comentario;
-    const error = this.state.error;
-    
 
-    if (cargando) {
+    if (this.state.cargando) {
       return (
         <View style={styles.container}>
           <Text style={styles.loading}>Cargando comentarios...</Text>
@@ -82,11 +77,11 @@ class Comentarios extends Component {
         <Text style={styles.title}>Comentarios</Text>
 
         
-        {comentarios.length === 0 ? (
+        {this.state.comentarios.length === 0 ? (
           <Text style={styles.noComments}>No hay comentarios aún.</Text>
         ) : (
           <FlatList
-            data={comentarios}  
+            data={this.state.comentarios}  
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View style={styles.commentCard}>
@@ -102,11 +97,11 @@ class Comentarios extends Component {
           style={styles.input}
           placeholder="Escribí tu comentario..."
           onChangeText={(text) => this.setState({ comentario: text })}
-          value={comentario}
+          value={this.state.comentario}
          
         />
 
- <Text style={styles.error}>{error}</Text>  
+ <Text style={styles.error}>{this.state.error}</Text>  
 
         <Pressable
           style={styles.button}
