@@ -107,14 +107,14 @@ class Profile extends Component {
         {posts.length === 0 ? (
           <Text style={styles.texto}>No tenés posteos aún.</Text>
         ) : (
-          <FlatList
+          <FlatList style= {styles.post}
             data={posts}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <Post
+              <Post 
                 data={item.data}
                 id={item.id}
-                navigation={this.props.navigation} //medio raros los estilos de esta parte.
+                navigation={this.props.navigation} 
               />
             )}
           />
@@ -179,6 +179,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: '600',
+  },
+  post: {
+    width: "65%"
+
   },
 });
 
