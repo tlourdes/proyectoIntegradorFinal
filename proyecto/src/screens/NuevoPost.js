@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, Image} from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet, Image, ActivityIndicator} from "react-native";
 import { db, auth } from "../firebase/config";
 import logo from "..///../assets/logo.png"; 
 
@@ -34,6 +34,7 @@ class NuevoPost extends Component {
           email: auth.currentUser.email,
           createdAt: Date.now(),
           likes: [],
+         
         })
         .then(() => {
           this.setState({mensaje: "" });

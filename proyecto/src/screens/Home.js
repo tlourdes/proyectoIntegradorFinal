@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, StyleSheet, Image} from "react-native";
+import { View, Text, FlatList, StyleSheet, Image, ActivityIndicator} from "react-native";
 import { db, auth } from "../firebase/config";
 import Post from "../components/Post";
 import logo from "..///../assets/logo.png"; 
@@ -46,7 +46,7 @@ class Home extends Component {
     if (this.state.loading) {
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>Cargando posteos...</Text>
+           <ActivityIndicator size="small" color="#1fa34a" />
         </View>
       );
     }

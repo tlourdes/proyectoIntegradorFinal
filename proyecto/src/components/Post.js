@@ -6,22 +6,32 @@ import { db, auth } from "../firebase/config";
 class Post extends Component {
   constructor(props) {
     super(props);
-let likeado = false;
-
-let contador = 0;
-
-if (this.props.data.likes) {
-  contador = this.props.data.likes.length;
-
-  if (auth.currentUser && this.props.data.likes.includes(auth.currentUser.email)) {
-    likeado = true;
-  }
-}
-    this.state = {
-      likes: contador,
-      likeado: likeado
+this.state = {
+      likes: 0,
+      likeado: false
     };
   }
+
+  componentDidMount() {
+    let likeado = false;
+    let contador = 0;
+
+    if (this.props.data.likes) {
+      contador = this.props.data.likes.length;
+
+      if (auth.currentUser && this.props.data.likes.includes(auth.currentUser.email)) {
+        likeado = true;
+      }
+    }
+
+    this.setState({
+      likes: contador,
+      likeado: likeado
+    });
+  }
+
+
+
 
   likePost() {
     db.collection("posts")

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, Pressable, StyleSheet, Image} from "react-native";
+import { View, Text, FlatList, Pressable, StyleSheet, Image, ActivityIndicator} from "react-native";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
 import logo from "..///../assets/logo.png"; 
@@ -21,7 +21,25 @@ class Profile extends Component {
       if (usuario) {
         console.log("Usuario detectado:", usuario.email);
         this.setState({usuario: usuario});
-        this.obtenerPosteos(usuario);
+        db.collection("posts")
+      .where("email", "==", usuario.email)
+      .onSnapshot(
+        (docs) => {
+          let posts = [];
+          docs.forEach((doc) => {
+            posts.push({
+              id: doc.id,
+              data: doc.data(),
+            });
+          });
+          this.setState({ posts: posts, cargando: false });
+        },
+        (error) => {
+          console.log("Error Firestore:", error);
+          this.setState({ cargando: false });
+        }
+      );
+
         db.collection("users")
           .where("email", "==", usuario.email)
           .onSnapshot(
@@ -42,26 +60,7 @@ class Profile extends Component {
     });
   }
 
-  obtenerPosteos(usuario) {
-    db.collection("posts")
-      .where("email", "==", usuario.email)
-      .onSnapshot(
-        (docs) => {
-          let posts = [];
-          docs.forEach((doc) => {
-            posts.push({
-              id: doc.id,
-              data: doc.data(),
-            });
-          });
-          this.setState({ posts: posts, cargando: false });
-        },
-        (error) => {
-          console.log("Error Firestore:", error);
-          this.setState({ cargando: false });
-        }
-      );
-  }
+
 
   cerrarSesion() {
     auth
@@ -81,7 +80,7 @@ class Profile extends Component {
     if (cargando) {
       return (
         <View style={styles.container}>
-          <Text style={styles.titulo}>Cargando perfil...</Text>
+          <ActivityIndicator size="small" color="#1fa34a" />
         </View>
       );
     }

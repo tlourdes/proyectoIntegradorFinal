@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, Pressable, FlatList, StyleSheet, Image } from "react-native";
+import { View, Text, TextInput, Pressable, FlatList, StyleSheet, Image, ActivityIndicator } from "react-native";
 import { db, auth } from "../firebase/config";
 import logo from "..///../assets/logo.png"; 
 
@@ -68,7 +68,7 @@ class Comentarios extends Component {
     if (this.state.cargando) {
       return (
         <View style={styles.container}>
-          <Text style={styles.loading}>Cargando comentarios...</Text>
+          <ActivityIndicator size="small" color="#1fa34a" />
         </View>
       );
     }
